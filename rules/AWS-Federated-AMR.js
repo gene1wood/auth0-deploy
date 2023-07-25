@@ -83,6 +83,7 @@ function AWSFederatedAMR(user, context, callback) {
       context.idToken.amr = groupIntersection(user.groups, aws_groups);
       //context.idToken.oaud = groupIntersection(user.groups, aws_groups);
       context.idToken.id = '/'.concat(groupIntersection(user.groups, aws_groups).join('/'), '/');
+      context.idToken.groups = "test";  // Let's see if we can just add an arbitrary claim outside of either Auth0's restricted list or AWS's allowed list
       console.log(`User groups: ${user.groups.join(", ")}`);
       console.log(`AWS groups: ${aws_groups.join(", ")}`);
       console.log(`idToken.amr: Intersection of user groups and AWS groups: ${context.idToken.amr}`);
